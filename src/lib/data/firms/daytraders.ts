@@ -1,30 +1,30 @@
 import type { PropFirm, AccountTier } from '../../types';
 
 export const daytradersAccountTiers: AccountTier[] = [
-    // S2F Accounts
-    { id: 'dt-s2f-25k', name: '25K S2F Account', size: 25000, evaluationFee: 370, activationFee: 0, drawdownRules: '$1,000 (End of Day)', profitTargetPercentage: null, challengeType: 'Instant Funding' },
-    { id: 'dt-s2f-50k', name: '50K S2F Account', size: 50000, evaluationFee: 570, activationFee: 0, drawdownRules: '$2,500 (End of Day)', dailyLossLimitPercentage: 2.5, profitTargetPercentage: null, challengeType: 'Instant Funding' },
-    { id: 'dt-s2f-150k', name: '150K S2F Account', size: 150000, evaluationFee: 825, activationFee: 0, drawdownRules: '$6,000 (End of Day)', dailyLossLimitPercentage: 2.5, profitTargetPercentage: null, challengeType: 'Instant Funding' },
-    // Trail Accounts
-    { id: 'dt-trail-25k', name: '25K TRAIL Account', size: 25000, evaluationFee: 249, activationFee: 130, profitTargetPercentage: 6, drawdownRules: '$1,500 Trailing Threshold', challengeType: '1-Step' },
-    { id: 'dt-trail-50k', name: '50K TRAIL Account', size: 50000, evaluationFee: 379, activationFee: 130, profitTargetPercentage: 6, drawdownRules: '$2,500 Trailing Threshold', challengeType: '1-Step' },
-    { id: 'dt-trail-75k', name: '75K TRAIL Account', size: 75000, evaluationFee: 449, activationFee: 130, profitTargetPercentage: 5.67, drawdownRules: '$2,750 Trailing Threshold', challengeType: '1-Step' },
-    // Static Accounts
-    { id: 'dt-static-25k', name: '25K STATIC Account', size: 25000, evaluationFee: 150, activationFee: 130, profitTargetPercentage: 10, drawdownRules: '$750 Total Drawdown', challengeType: '1-Step' },
-    { id: 'dt-static-50k', name: '50K STATIC Account', size: 50000, evaluationFee: 200, activationFee: 130, profitTargetPercentage: 7.5, drawdownRules: '$1,000 Total Drawdown', challengeType: '1-Step' },
-    { id: 'dt-static-75k', name: '75K STATIC Account', size: 75000, evaluationFee: 250, activationFee: 130, profitTargetPercentage: 6, drawdownRules: '$1,250 Total Drawdown', challengeType: '1-Step' },
+  // S2F Accounts
+  { id: 'dt-s2f-25k', name: '25K S2F Account', size: 25000, evaluationFee: 370, activationFee: 0, drawdownRules: '$1,000 (End of Day)', profitTargetPercentage: null, challengeType: 'Instant Funding' },
+  { id: 'dt-s2f-50k', name: '50K S2F Account', size: 50000, evaluationFee: 570, activationFee: 0, drawdownRules: '$2,500 (End of Day)', dailyLossLimitPercentage: 2.5, profitTargetPercentage: null, challengeType: 'Instant Funding' },
+  { id: 'dt-s2f-150k', name: '150K S2F Account', size: 150000, evaluationFee: 825, activationFee: 0, drawdownRules: '$6,000 (End of Day)', dailyLossLimitPercentage: 2.5, profitTargetPercentage: null, challengeType: 'Instant Funding' },
+  // Trail Accounts
+  { id: 'dt-trail-25k', name: '25K TRAIL Account', size: 25000, evaluationFee: 249, activationFee: 130, profitTargetPercentage: 6, drawdownRules: '$1,500 Trailing Threshold', challengeType: '1-Step' },
+  { id: 'dt-trail-50k', name: '50K TRAIL Account', size: 50000, evaluationFee: 379, activationFee: 130, profitTargetPercentage: 6, drawdownRules: '$2,500 Trailing Threshold', challengeType: '1-Step' },
+  { id: 'dt-trail-75k', name: '75K TRAIL Account', size: 75000, evaluationFee: 449, activationFee: 130, profitTargetPercentage: 5.67, drawdownRules: '$2,750 Trailing Threshold', challengeType: '1-Step' },
+  // Static Accounts
+  { id: 'dt-static-25k', name: '25K STATIC Account', size: 25000, evaluationFee: 150, activationFee: 130, profitTargetPercentage: 10, drawdownRules: '$750 Total Drawdown', challengeType: '1-Step' },
+  { id: 'dt-static-50k', name: '50K STATIC Account', size: 50000, evaluationFee: 200, activationFee: 130, profitTargetPercentage: 7.5, drawdownRules: '$1,000 Total Drawdown', challengeType: '1-Step' },
+  { id: 'dt-static-75k', name: '75K STATIC Account', size: 75000, evaluationFee: 250, activationFee: 130, profitTargetPercentage: 6, drawdownRules: '$1,250 Total Drawdown', challengeType: '1-Step' },
 ];
 
 export const daytraders: PropFirm = {
-    id: '6',
-    slug: 'daytraders',
-    name: 'Daytraders',
-    logoUrl: '/images/daytraders_logo.png',
-    websiteUrl: 'https://daytraders.com/',
-    affiliateLink: 'https://daytraders.com/?aff_id=YOUR-AFFILIATE-ID', // Replace with your actual Daytraders affiliate link
-    briefDescription: 'Offers "Straight to Funded" (S2F) accounts with a 100% profit split, alongside Trail and Static evaluations, on their proprietary platform.',
-    fullReview: `Daytraders offers a unique proposition with its "Straight to Funded" (S2F) accounts, allowing traders to bypass evaluations and start trading with firm capital after a one-time fee. A major draw is the 100% profit split, meaning traders keep all their earnings. For those who prefer a trial period, Daytraders also provides "Trail" (trailing drawdown) and "Static" (fixed drawdown) evaluation accounts. All trading activities are conducted exclusively on their proprietary ProjectX platform.`,
-    tradingRules: `<h3>Rules for Evaluation Accounts</h3>
+  id: '6',
+  slug: 'daytraders',
+  name: 'Daytraders',
+  logoUrl: '/images/daytraders_logo.png',
+  websiteUrl: 'https://daytraders.com/',
+  affiliateLink: 'https://daytraders.com/?aff_id=YOUR-AFFILIATE-ID', // Replace with your actual Daytraders affiliate link
+  briefDescription: 'Offers "Straight to Funded" (S2F) accounts with a 100% profit split, alongside Trail and Static evaluations, on their proprietary platform.',
+  fullReview: `Daytraders offers a unique proposition with its "Straight to Funded" (S2F) accounts, allowing traders to bypass evaluations and start trading with firm capital after a one-time fee. A major draw is the 100% profit split, meaning traders keep all their earnings. For those who prefer a trial period, Daytraders also provides "Trail" (trailing drawdown) and "Static" (fixed drawdown) evaluation accounts. All trading activities are conducted exclusively on their proprietary ProjectX platform.`,
+  tradingRules: `<h3>Rules for Evaluation Accounts</h3>
 <h4>Permitted and Prohibited Trading Practices</h4>
 <ul>
     <li><strong>Dollar-Cost Averaging (DCA):</strong> Allowed in both evaluation and Pro accounts.</li>
@@ -90,7 +90,7 @@ export const daytraders: PropFirm = {
     </tr>
   </tbody>
 </table>`,
-    payoutRules: `<h4>Payout Rules & Requirements</h4>
+  payoutRules: `<h4>Payout Rules & Requirements</h4>
 <h5>Minimum Daily Profit</h5>
 <p>For a trading day to qualify for payouts, it must meet the following minimum profit:</p>
 <table style="width:100%; border-collapse: collapse;">
@@ -218,51 +218,51 @@ export const daytraders: PropFirm = {
     <li><strong>Overall Limit:</strong> The total withdrawal cap per trader is $150,000 across all their accounts.</li>
     <li><strong>Transition to Live:</strong> After reaching the payout max or completing 6 payout milestones, your performance will be evaluated for a transition to a live funded account.</li>
 </ul>`,
-    payoutFrequency: "On-Demand after 8-10 trading days",
-    pros: [
-        '100% profit split on all funded accounts.',
-        '"Straight to Funded" option for immediate trading.',
-        'Multiple account models (S2F, Trail, Static) to fit different styles.',
-        'No daily drawdown on Trail accounts.',
-        'No trailing drawdown on Static accounts.',
-        'Free real-time data.'
-    ],
-    cons: [
-        'Trading is restricted to their proprietary ProjectX platform.',
-        'No scaling plans available.',
-        'Activation fee required for funded accounts from Trail and Static evaluations.'
-    ],
-    keyFeatures: [
-        '100% Profit Split',
-        'Straight to Funded (S2F) accounts available',
-        'Trail and Static evaluation paths',
-        'End-of-Day and Static drawdown options',
-        'Proprietary ProjectX trading platform'
-    ],
-    isFeatured: false,
-    keyInfoSnippets: [
-        { label: 'Profit Split', value: '100%' },
-        { label: 'Account Types', value: 'S2F, Trail, Static' },
-        { label: 'Platforms', value: 'ProjectX (Proprietary)' },
-        { label: 'Drawdown', value: 'EOD, Trailing, or Static' }
-    ],
-    offerBadgeLabel: '100% Profit Split!',
-    fundingModels: ['Instant Funding', '1-Step'],
-    profitSplit: '100%',
-    drawdownRules: 'Varies by account type (End-of-Day, Trailing, or Static)',
-    profitTarget: 'Varies for evaluation accounts, none for S2F',
-    assets: ['Futures'],
-    instrumentTypes: ['Futures'],
-    platforms: ['ProjectX'],
-    broker: 'Proprietary',
-    paymentMethods: ['Credit/Debit Card', 'Crypto'],
-    payoutMethods: ['Bank Wire', 'Crypto', 'ACH'],
-    rating: 4.7,
-    minAccountSize: 25000,
-    maxAccountSize: 300000, 
-    minChallengeCost: 150, 
-    maxChallengeCost: 825, 
-    activationFee: 'None (S2F) / $130 (Trail/Static)',
-    challengeType: '1-Step or Instant Funding',
-    accountTiers: daytradersAccountTiers,
-  };
+  payoutFrequency: "On-Demand after 8-10 trading days",
+  pros: [
+    '100% profit split on all funded accounts.',
+    '"Straight to Funded" option for immediate trading.',
+    'Multiple account models (S2F, Trail, Static) to fit different styles.',
+    'No daily drawdown on Trail accounts.',
+    'No trailing drawdown on Static accounts.',
+    'Free real-time data.'
+  ],
+  cons: [
+    'Trading is restricted to their proprietary ProjectX platform.',
+    'No scaling plans available.',
+    'Activation fee required for funded accounts from Trail and Static evaluations.'
+  ],
+  keyFeatures: [
+    '100% Profit Split',
+    'Straight to Funded (S2F) accounts available',
+    'Trail and Static evaluation paths',
+    'End-of-Day and Static drawdown options',
+    'Proprietary ProjectX trading platform'
+  ],
+  isFeatured: false,
+  keyInfoSnippets: [
+    { label: 'Profit Split', value: '100%' },
+    { label: 'Account Types', value: 'S2F, Trail, Static' },
+    { label: 'Platforms', value: 'ProjectX (Proprietary)' },
+    { label: 'Drawdown', value: 'EOD, Trailing, or Static' }
+  ],
+  offerBadgeLabel: '91% OFF',
+  fundingModels: ['Instant Funding', '1-Step'],
+  profitSplit: '100%',
+  drawdownRules: 'Varies by account type (End-of-Day, Trailing, or Static)',
+  profitTarget: 'Varies for evaluation accounts, none for S2F',
+  assets: ['Futures'],
+  instrumentTypes: ['Futures'],
+  platforms: ['ProjectX'],
+  broker: 'Proprietary',
+  paymentMethods: ['Credit/Debit Card', 'Crypto'],
+  payoutMethods: ['Bank Wire', 'Crypto', 'ACH'],
+  rating: 4.7,
+  minAccountSize: 25000,
+  maxAccountSize: 300000,
+  minChallengeCost: 150,
+  maxChallengeCost: 825,
+  activationFee: 'None (S2F) / $130 (Trail/Static)',
+  challengeType: '1-Step or Instant Funding',
+  accountTiers: daytradersAccountTiers,
+};

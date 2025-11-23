@@ -38,10 +38,10 @@ export default function TermsAndPrivacyPage() {
           <p className="text-destructive-foreground">
             All content, reviews, comparisons, tools, and resources provided on TradingisEZ (the "Website") are for <strong>informational and educational purposes only</strong>. The information is general in nature and does not take into account your individual financial circumstances, investment objectives, or risk tolerance.
           </p>
-          <p  className="text-destructive-foreground">
+          <p className="text-destructive-foreground">
             The information on this website is not, and should not be interpreted as, financial advice, investment advice, a recommendation to buy or sell any security or asset, or an offer to enter into any transaction. Trading, especially in futures, forex, and cryptocurrencies, involves a substantial risk of loss and is not suitable for all investors. Past performance is not indicative of future results.
           </p>
-           <p  className="text-destructive-foreground">
+          <p className="text-destructive-foreground">
             You should not make any financial, investment, or trading decisions based on any of the information presented on this website without undertaking independent due diligence and consultation with a qualified professional financial advisor. We are not liable for any loss or damage which may arise directly or indirectly from use of or reliance on such information.
           </p>
         </CardContent>
@@ -54,7 +54,7 @@ export default function TermsAndPrivacyPage() {
         <CardContent className="prose dark:prose-invert max-w-none">
           <h3 className="text-xl font-semibold mt-6 mb-2">1. Agreement to Terms</h3>
           <p>By accessing or using the Website, you agree to be bound by these Terms of Service ("Terms") and our Privacy Policy. If you disagree with any part of the terms, then you may not access the Website.</p>
-          
+
           <h3 className="text-xl font-semibold mt-6 mb-2">2. Use License</h3>
           <p>Permission is granted to temporarily download one copy of the materials (information or software) on TradingisEZ's Website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:</p>
           <ul>
@@ -64,18 +64,23 @@ export default function TermsAndPrivacyPage() {
             <li>remove any copyright or other proprietary notations from the materials; or</li>
             <li>transfer the materials to another person or "mirror" the materials on any other server.</li>
           </ul>
-           <p>This license shall automatically terminate if you violate any of these restrictions and may be terminated by TradingisEZ at any time.</p>
+          <p>This license shall automatically terminate if you violate any of these restrictions and may be terminated by TradingisEZ at any time.</p>
 
-           <h3 className="text-xl font-semibold mt-6 mb-2">3. Affiliate Disclosure & Third-Party Content</h3>
-           <p>At TradingisEZ, our mission is to provide traders with valuable, unbiased information and resources to help them succeed. To support our work and keep our content free, we participate in affiliate marketing programs. Throughout our website, you may find links to third-party products and services (such as proprietary trading firms, trading tools, courses, etc.). These links may be affiliate links. This means that if you click on one of these links and subsequently make a purchase or sign up for a service on the third-party website, we may receive a small commission or referral fee. This comes at <strong>no additional cost to you</strong>.</p>
-           <p>Using our affiliate links helps support TradingisEZ, allowing us to continue creating high-quality content. Our reviews, comparisons, and recommendations are based on thorough research, analysis, and experience. While we may receive compensation, this does not influence our editorial content. We only recommend products and services that we believe will provide value to our readers. The trust of our audience is paramount.</p>
-           <p>The Website may contain links to third-party websites or services that are not owned or controlled by TradingisEZ. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You further acknowledge and agree that TradingisEZ shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
+          <h3 className="text-xl font-semibold mt-6 mb-2">3. Affiliate Disclosure & Third-Party Content</h3>
+          <p>At TradingisEZ, our mission is to provide traders with valuable, unbiased information and resources to help them succeed. To support our work and keep our content free, we participate in affiliate marketing programs. Throughout our website, you may find links to third-party products and services (such as proprietary trading firms, trading tools, courses, etc.). These links may be affiliate links. This means that if you click on one of these links and subsequently make a purchase or sign up for a service on the third-party website, we may receive a small commission or referral fee. This comes at <strong>no additional cost to you</strong>.</p>
+          <p>Using our affiliate links helps support TradingisEZ, allowing us to continue creating high-quality content. Our reviews, comparisons, and recommendations are based on thorough research, analysis, and experience. While we may receive compensation, this does not influence our editorial content. We only recommend products and services that we believe will provide value to our readers. The trust of our audience is paramount.</p>
+          <p>The Website may contain links to third-party websites or services that are not owned or controlled by TradingisEZ. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You further acknowledge and agree that TradingisEZ shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
 
 
           <h3 className="text-xl font-semibold mt-6 mb-2">4. Disclaimer of Warranties</h3>
           <p>The materials on the Website are provided on an 'as is' basis. TradingisEZ makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. Further, TradingisEZ does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site.</p>
 
-          <h3 className="text-xl font-semibold mt-6 mb-2">5. Limitations of Liability</h3>
+          <h3 className="text-xl font-semibold mt-6 mb-2">5. Information Accuracy and Currency</h3>
+          <p>While we strive to maintain accurate and up-to-date information about proprietary trading firms, pricing, promotions, rules, and other details, <strong>we cannot guarantee that all information on this website is current, complete, or error-free at all times</strong>. Proprietary trading firms frequently update their offerings, pricing structures, promotional codes, trading rules, and terms of service without prior notice to third-party websites like ours.</p>
+          <p>The information presented on TradingisEZ, including but not limited to pricing, account tiers, profit splits, drawdown rules, promotional discounts, and firm policies, is subject to change. We make reasonable efforts to update our data regularly, but there may be delays or discrepancies between what is displayed on our site and the current offerings of the firms we review.</p>
+          <p><strong>It is your responsibility</strong> to verify all information directly with the proprietary trading firm before making any purchase, enrollment, or financial commitment. Always review the firm's official website, terms of service, and current pricing to ensure you have the most accurate and recent information. We are not liable for any losses, damages, or adverse outcomes resulting from reliance on outdated, incomplete, or inaccurate information found on this website.</p>
+
+          <h3 className="text-xl font-semibold mt-6 mb-2">6. Limitations of Liability</h3>
           <p>In no event shall TradingisEZ or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on TradingisEZ's Website, even if TradingisEZ or an authorized representative has been notified orally or in writing of the possibility of such damage.</p>
         </CardContent>
       </Card>
@@ -85,7 +90,7 @@ export default function TermsAndPrivacyPage() {
           <CardTitle className="text-2xl">Privacy Policy</CardTitle>
         </CardHeader>
         <CardContent className="prose dark:prose-invert max-w-none">
-           <h3 className="text-xl font-semibold mt-6 mb-2">1. Information We Collect</h3>
+          <h3 className="text-xl font-semibold mt-6 mb-2">1. Information We Collect</h3>
           <p>We do not require user accounts to use our Website. However, like most website operators, we may collect non-personally-identifying information of the sort that web browsers and servers typically make available, such as the browser type, language preference, referring site, and the date and time of each visitor request. We may also collect potentially personally-identifying information like Internet Protocol (IP) addresses.</p>
 
           <h3 className="text-xl font-semibold mt-6 mb-2">2. How We Use Information</h3>
@@ -97,7 +102,7 @@ export default function TermsAndPrivacyPage() {
           <h3 className="text-xl font-semibold mt-6 mb-2">4. Third-Party Links, Content, and Services</h3>
           <p>Our Website may contain links to third-party websites or services, such as the proprietary trading firms we review. This Privacy Policy does not apply to these third-party platforms, and we are not responsible for their privacy practices. If you click on links (including affiliate links) or interact with third-party services, their privacy policies will govern the collection and use of your data. We encourage you to review their policies before sharing any information.</p>
           <p>Some pages on our Website may also include embedded content from third parties (e.g., YouTube videos). Interacting with such content may result in data being shared directly with the respective third party according to their privacy policy.</p>
-        
+
           <h3 className="text-xl font-semibold mt-6 mb-2">5. Data Security</h3>
           <p>The security of your information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially acceptable means to protect your information, we cannot guarantee its absolute security.</p>
 
@@ -113,7 +118,7 @@ export default function TermsAndPrivacyPage() {
         <CardContent className="prose dark:prose-invert max-w-none">
           <h3 className="text-xl font-semibold mt-6 mb-2">Governing Law</h3>
           <p>These terms and conditions are governed by and construed in accordance with the laws of The United States of America and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.</p>
-          
+
           <h3 className="text-xl font-semibold mt-6 mb-2">Changes to These Terms</h3>
           <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will note the "Last Updated" date at the top of this page. By continuing to access or use our Website after those revisions become effective, you agree to be bound by the revised terms.</p>
 
