@@ -40,10 +40,10 @@ export default function PropFirmFinder({ onSearch }: PropFirmFinderProps) {
     };
 
     return (
-        <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+        <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 overflow-hidden">
 
             {/* Background Elements */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-full pointer-events-none overflow-hidden">
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
                 <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000" />
             </div>
@@ -115,7 +115,7 @@ export default function PropFirmFinder({ onSearch }: PropFirmFinderProps) {
                                         <SelectTrigger className="w-full bg-white/5 border-white/10 text-white h-12 rounded-xl focus:ring-primary">
                                             <SelectValue placeholder="Select Experience" />
                                         </SelectTrigger>
-                                        <SelectContent className="bg-[#1A1D24] border-white/10 text-gray-300">
+                                        <SelectContent className="bg-[#1A1D24] border-white/10 text-gray-300" sideOffset={5}>
                                             <SelectItem value="beginner">Beginner (1 Step)</SelectItem>
                                             <SelectItem value="intermediate">Intermediate (2 Step)</SelectItem>
                                             <SelectItem value="pro">Pro (Instant/Direct)</SelectItem>

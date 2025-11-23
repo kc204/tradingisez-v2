@@ -1,5 +1,5 @@
 
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -12,6 +12,16 @@ const siteConfig = {
   url: 'https://www.tradingisez.com', // Replace with your actual domain
   logo: 'https://www.tradingisez.com/images/logo.png', // Replace with your actual logo path
   description: 'Find the Perfect Prop Firm & Get Funded with TradingisEZ. Your comprehensive trading hub with reviews, comparisons, and exclusive offers.',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
 };
 
 export const metadata: Metadata = {

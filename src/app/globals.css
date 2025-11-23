@@ -120,9 +120,16 @@
     background-color: hsl(var(--primary));
   }
 
+  html {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
   body {
     @apply bg-background text-foreground; 
     font-family: 'Satoshi', sans-serif;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   ::selection {
