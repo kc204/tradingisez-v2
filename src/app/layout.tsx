@@ -78,14 +78,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-       <head>
+      <head>
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&display=swap" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="antialiased flex flex-col min-h-screen overflow-x-hidden">
+      <body className="font-sans antialiased flex flex-col min-h-screen overflow-x-hidden">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark" // Enforce dark theme for "Dynamic Blue & Action Orange"
