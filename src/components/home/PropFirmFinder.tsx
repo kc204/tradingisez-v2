@@ -69,7 +69,7 @@ export default function PropFirmFinder({ onSearch }: PropFirmFinderProps) {
                             {/* Trading Style */}
                             <div className="space-y-3">
                                 <label className="text-sm font-medium text-gray-300">Your Trading Style</label>
-                                <div className="grid grid-cols-3 gap-3">
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                                     {['Day Trading', 'Swing Trading', 'Scalping'].map((style) => (
                                         <button
                                             key={style}
