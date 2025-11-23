@@ -10,16 +10,16 @@ export const bulenoxAccountTiers: AccountTier[] = [
 ];
 
 export const bulenox: PropFirm = {
-    id: '5',
-    slug: 'bulenox',
-    name: 'Bulenox',
-    logoUrl: '/images/bulenox_logo.png',
-    websiteUrl: 'https://bulenox.com/',
-    affiliateLink: 'https://bulenox.com/?ref=YOUR-AFFILIATE-ID', // REPLACE WITH YOUR ACTUAL BULENOX AFFILIATE LINK
-    isFeatured: true,
-    briefDescription: 'Futures prop firm with a Qualification to Master account path, choice of drawdown models, and a 100% profit split on the first $10,000.',
-    fullReview: `Bulenox provides a structured career path for futures traders, starting with a Qualification Account and progressing to a Master Account. A key differentiator is the choice between two evaluation models: a "No Scaling" account with a trailing drawdown and no daily loss limit, or an "EOD" account with an end-of-day drawdown, a daily loss limit, and a contract scaling plan. After a minimum of 5 trading days, successful traders pay a one-time activation fee to receive a Master Account. This funded account features a 100% profit split on the first $10,000, after which the split becomes 90/10. Traders who demonstrate consistent success on a Master Account may be invited to trade a real capital funded account.`,
-    tradingRules: `<h3>Step 1: The Qualification Account</h3>
+  id: '5',
+  slug: 'bulenox',
+  name: 'Bulenox',
+  logoUrl: '/images/bulenox_logo.png',
+  websiteUrl: 'https://bulenox.com/',
+  affiliateLink: 'https://bulenox.com/?ref=YOUR-AFFILIATE-ID', // REPLACE WITH YOUR ACTUAL BULENOX AFFILIATE LINK
+  isFeatured: true,
+  briefDescription: 'Futures prop firm with a Qualification to Master account path, choice of drawdown models, and a 100% profit split on the first $10,000.',
+  fullReview: `Bulenox provides a structured career path for futures traders, starting with a Qualification Account and progressing to a Master Account. A key differentiator is the choice between two evaluation models: a "No Scaling" account with a trailing drawdown and no daily loss limit, or an "EOD" account with an end-of-day drawdown, a daily loss limit, and a contract scaling plan. After a minimum of 5 trading days, successful traders pay a one-time activation fee to receive a Master Account. This funded account features a 100% profit split on the first $10,000, after which the split becomes 90/10. Traders who demonstrate consistent success on a Master Account may be invited to trade a real capital funded account.`,
+  tradingRules: `<h3>Step 1: The Qualification Account</h3>
 <p>This is the first step for all traders. The goal is to prove your trading skill by meeting a profit target without breaking any rules.</p>
 <h4>Choose Your Trading Style: Account Options</h4>
 <p>You must choose one of two account types for your qualification.</p>
@@ -70,7 +70,7 @@ export const bulenox: PropFirm = {
     <li><strong>Holding Positions:</strong> You are generally required to close all positions before 3:59 PM CST. Holding positions overnight is not permitted, except on the specific $10,000 account.</li>
     <li><strong>Technical Issues:</strong> If you experience technical problems, you must contact the support team immediately with a detailed description of the issue.</li>
 </ul>`,
-    payoutRules: `<h4>Payouts & Withdrawals</h4>
+  payoutRules: `<h4>Payouts & Withdrawals</h4>
 <ul>
   <li><strong>Profit Split:</strong> You keep 100% of the first $10,000 you make. After that, the profit split is 90% for you and 10% for Bulenox.</li>
   <li><strong>First Withdrawal:</strong> You need at least 10 active trading days before your first payout request.</li>
@@ -78,49 +78,49 @@ export const bulenox: PropFirm = {
   <li><strong>Withdrawal Limits:</strong> For your first three payouts, there are maximum withdrawal amounts to encourage account stability. These limits are removed after the third payout.</li>
   <li><strong>Safety Reserve:</strong> A minimum account balance (safety reserve) must be maintained to make a withdrawal.</li>
 </ul>`,
-    payoutFrequency: "On-Demand after 10 trading days",
-    pros: [
-      "Keep 100% of the first $10,000 in profits",
-      "Choice between Trailing or EOD drawdown models",
-      "No daily loss limit on 'No Scaling' accounts",
-      "One-time activation fee for funded accounts (no monthly fees)",
-      "Supports a wide range of trading platforms"
-    ],
-    cons: [
-      "40% consistency rule for payouts",
-      "Master Accounts cannot be reset",
-      "Withdrawal limits apply for the first three payouts"
-    ],
-    keyFeatures: [
-      'Multi-stage career path (Qualification -> Master -> Funded)',
-      '100% profit split on first $10k, then 90/10',
-      'Choice of Trailing Drawdown or EOD Drawdown',
-      'No monthly fees on funded Master accounts',
-      'Supports Rithmic/CQG compatible platforms'
-    ],
-    keyInfoSnippets: [
-      { label: 'Profit Split', value: '100% (first $10k), then 90%' },
-      { label: 'Drawdown Models', value: 'Trailing or EOD' },
-      { label: 'Funded Fee', value: 'One-Time Activation' },
-      { label: 'Platforms', value: 'Rithmic/CQG Compatible' },
-    ],
-    promo: '90% off all accounts',
-    fundingModels: ['1-Step'],
-    profitSplit: '100% of first $10k, then 90/10',
-    drawdownRules: 'Trailing or EOD (stops at initial balance)',
-    profitTarget: 'Varies by account size (e.g., $1,500 on $25k)',
-    assets: ['Futures (CME, COMEX, NYMEX, CBOT)'],
-    instrumentTypes: ['Futures'],
-    platforms: ['NinjaTrader', 'Tradovate', 'TradingView', 'Rithmic Trader Pro', 'MultiCharts', 'Bookmap', 'Jigsaw Daytrader', 'Sierra Chart', 'MotiveWave', 'VolSys', 'Quantower', 'ATAS Order Flow Trading', 'RTrader Pro', 'Investor RT'],
-    broker: 'Rithmic, CQG',
-    paymentMethods: ['Credit/Debit Card', 'Crypto'],
-    payoutMethods: ['Bank Wire', 'Crypto', 'Zelle'],
-    rating: 4.7,
-    minAccountSize: 25000,
-    maxAccountSize: 250000,
-    minChallengeCost: 145, 
-    maxChallengeCost: 535,
-    activationFee: 'One-time fee, varies by account size',
-    challengeType: '1-Step',
-    accountTiers: bulenoxAccountTiers,
-  };
+  payoutFrequency: "On-Demand after 10 trading days",
+  pros: [
+    "Keep 100% of the first $10,000 in profits",
+    "Choice between Trailing or EOD drawdown models",
+    "No daily loss limit on 'No Scaling' accounts",
+    "One-time activation fee for funded accounts (no monthly fees)",
+    "Supports a wide range of trading platforms"
+  ],
+  cons: [
+    "40% consistency rule for payouts",
+    "Master Accounts cannot be reset",
+    "Withdrawal limits apply for the first three payouts"
+  ],
+  keyFeatures: [
+    'Multi-stage career path (Qualification -> Master -> Funded)',
+    '100% profit split on first $10k, then 90/10',
+    'Choice of Trailing Drawdown or EOD Drawdown',
+    'No monthly fees on funded Master accounts',
+    'Supports Rithmic/CQG compatible platforms'
+  ],
+  keyInfoSnippets: [
+    { label: 'Profit Split', value: '100% (first $10k), then 90%' },
+    { label: 'Drawdown Models', value: 'Trailing or EOD' },
+    { label: 'Funded Fee', value: 'One-Time Activation' },
+    { label: 'Platforms', value: 'Rithmic/CQG Compatible' },
+  ],
+  promo: '90% off all accounts',
+  fundingModels: ['1-Step'],
+  profitSplit: '100% of first $10k, then 90/10',
+  drawdownRules: 'Trailing or EOD (stops at initial balance)',
+  profitTarget: 'Varies by account size (e.g., $1,500 on $25k)',
+  assets: ['Futures (CME, COMEX, NYMEX, CBOT)'],
+  instrumentTypes: ['Futures'],
+  platforms: ['NinjaTrader', 'Tradovate', 'TradingView', 'Rithmic Trader Pro', 'MultiCharts', 'Bookmap', 'Jigsaw Daytrader', 'Sierra Chart', 'MotiveWave', 'VolSys', 'Quantower', 'ATAS Order Flow Trading', 'RTrader Pro', 'Investor RT'],
+  broker: 'Rithmic, CQG',
+  paymentMethods: ['Credit/Debit Card', 'Crypto'],
+  payoutMethods: ['Bank Wire', 'Crypto', 'Zelle'],
+  rating: 4.7,
+  minAccountSize: 25000,
+  maxAccountSize: 250000,
+  minChallengeCost: 145,
+  maxChallengeCost: 535,
+  activationFee: 'One-time fee, varies by account size',
+  challengeType: '1-Step',
+  accountTiers: bulenoxAccountTiers,
+};
