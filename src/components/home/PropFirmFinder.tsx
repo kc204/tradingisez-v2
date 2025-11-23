@@ -16,20 +16,20 @@ import { Search, TrendingUp, BarChart2, Zap } from 'lucide-react';
 interface PropFirmFinderProps {
     onSearch: (filters: {
         tradingStyle: string;
-        capital: number;
+        capital: number[]; // Changed to array for min-max range
         experience: string;
     }) => void;
 }
 
 export default function PropFirmFinder({ onSearch }: PropFirmFinderProps) {
     const [tradingStyle, setTradingStyle] = useState('Day Trading');
-    const [capital, setCapital] = useState([50000]);
+    const [capital, setCapital] = useState([25000, 100000]); // Min-Max range
     const [experience, setExperience] = useState('');
 
     const handleSearch = () => {
         onSearch({
             tradingStyle,
-            capital: capital[0],
+            capital: capital, // Pass the full range [min, max]
             experience,
         });
     };
@@ -91,8 +91,8 @@ export default function PropFirmFinder({ onSearch }: PropFirmFinderProps) {
                                 {/* Capital Slider */}
                                 <div className="space-y-4">
                                     <div className="flex justify-between text-sm">
-                                        <label className="font-medium text-gray-300">Capital Needed?</label>
-                                        <span className="text-primary font-bold">{formatCurrency(capital[0])}</span>
+                                        <label className="font-medium text-gray-300">Capital Range</label>
+                                        <span className="text-primary font-bold">{formatCurrency(capital[0])} - {formatCurrency(capital[1])}</span>
                                     </div>
                                     <Slider
                                         value={capital}
@@ -100,6 +100,7 @@ export default function PropFirmFinder({ onSearch }: PropFirmFinderProps) {
                                         min={10000}
                                         max={1000000}
                                         step={10000}
+                                        minStepsBetweenThumbs={1}
                                         className="py-4"
                                     />
                                     <div className="flex justify-between text-xs text-gray-500">

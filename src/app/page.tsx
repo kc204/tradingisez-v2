@@ -394,9 +394,18 @@ const ChallengeRow = ({ challenge, applyDiscount, isScrolled }: any) => {
         <FirmMiniDetail firm={firm}>
             <tr className="group/row hover:bg-white/5 transition-colors duration-200 cursor-pointer transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/50 transition-transform">
                 <td className="px-2 py-3 sm:px-4 whitespace-nowrap sticky left-0 z-0 bg-black/80 group-hover/row:bg-gray-800/80 backdrop-blur-sm">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 relative">
                         <div className="w-11 h-11 relative flex-shrink-0">
                             <Image data-ai-hint="logo" className="rounded-lg object-contain border-2 border-white/10" src={challenge.logoUrl} alt={`${challenge.firmName} logo`} layout="fill" />
+                            {/* Hover Indicator - Pulsing Badge */}
+                            <div className="absolute -top-1 -right-1 opacity-0 group-hover/row:opacity-100 transition-opacity duration-300">
+                                <div className="relative">
+                                    <div className="absolute inset-0 bg-primary rounded-full animate-ping opacity-75" />
+                                    <div className="relative bg-primary rounded-full p-1">
+                                        <Info className="h-3 w-3 text-white" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div
                             className={cn(
@@ -408,6 +417,13 @@ const ChallengeRow = ({ challenge, applyDiscount, isScrolled }: any) => {
                             <div className="flex items-center text-xs text-gray-400 mt-1">
                                 <Star className="h-3.5 w-3.5 text-yellow-400 mr-1" />
                                 {challenge.trustpilotRating} ({challenge.trustpilotReviewCount})
+                            </div>
+                        </div>
+                        {/* Tooltip on hover - Desktop only */}
+                        <div className="absolute left-full ml-4 opacity-0 group-hover/row:opacity-100 transition-opacity duration-300 pointer-events-none hidden lg:block">
+                            <div className="bg-primary/90 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg whitespace-nowrap shadow-lg">
+                                Click for details
+                                <div className="absolute left-0 top-1/2 -translate-x-1 -translate-y-1/2 w-2 h-2 bg-primary/90 rotate-45" />
                             </div>
                         </div>
                     </div>
@@ -852,15 +868,16 @@ export default function Home() {
 
         const newFilters: any = { ...filters };
 
-        // Map Capital
-        const standardSizes = [25000, 50000, 100000, 150000, 200000];
+        // Map Capital Range (now receives [min, max] array)
         const capital = searchFilters.capital;
-        if (standardSizes.includes(capital)) {
+        if (Array.isArray(capital) && capital.length === 2) {
+            // Use the custom size range for the min-max selection
+            newFilters.accountSize = [];
+            newFilters.customSizeRange = capital; // Direct range [min, max]
+        } else {
+            // Fallback if somehow we get a single value
             newFilters.accountSize = [capital];
             newFilters.customSizeRange = null;
-        } else {
-            newFilters.accountSize = [];
-            newFilters.customSizeRange = [capital, capital];
         }
 
         // Map Experience

@@ -27,19 +27,19 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
 let app: any;
 let db: any;
 try {
     if (!firebaseConfig.projectId) {
-      throw new Error("Firebase project ID is missing");
+        throw new Error("Firebase project ID is missing");
     }
     app = initializeApp(firebaseConfig);
     db = getFirestore(app);
@@ -49,7 +49,7 @@ try {
 }
 
 const formatCurrency = (value: any) => value == null ? 'N/A' : new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(value);
-const formatShortCurrency = (value: any) => value == null ? 'N/A' : `$${value/1000}K`;
+const formatShortCurrency = (value: any) => value == null ? 'N/A' : `$${value / 1000}K`;
 
 const Separator = () => <div className="hidden md:block h-6 w-px bg-white/10 mx-2"></div>;
 
@@ -76,9 +76,9 @@ const ControlBar = ({ filters, setFilters, selectedFirm, setSelectedFirm, filter
     const handleFilterChange = (key: string, value: any) => {
         setFilters((prev: any) => ({ ...prev, [key]: value }));
     };
-    
+
     const handleDiscountToggle = () => {
-        setFilters((prev: any) => ({...prev, applyDiscount: !prev.applyDiscount}));
+        setFilters((prev: any) => ({ ...prev, applyDiscount: !prev.applyDiscount }));
     };
 
     const toggleSizeFilter = (size: number) => {
@@ -88,9 +88,9 @@ const ControlBar = ({ filters, setFilters, selectedFirm, setSelectedFirm, filter
             ? currentSizes.filter((s: number) => s !== size)
             : [...currentSizes, size];
         handleFilterChange('accountSize', newSizes);
-        handleFilterChange('customSizeRange', null); 
+        handleFilterChange('customSizeRange', null);
     };
-    
+
     const handleSetCustomSize = () => {
         setCustomSize(tempCustomSize);
         setIsCustomSizeActive(true);
@@ -98,14 +98,14 @@ const ControlBar = ({ filters, setFilters, selectedFirm, setSelectedFirm, filter
         handleFilterChange('customSizeRange', tempCustomSize);
         setIsPopoverOpen(false); // Close popover on set
     };
-    
+
     const handlePopoverOpenChange = (open: boolean) => {
         setIsPopoverOpen(open);
         if (open) {
             // When opening, sync temp slider with the active filter value
             setTempCustomSize(customSize);
         } else {
-             // If closing without setting, decide if custom range should remain active
+            // If closing without setting, decide if custom range should remain active
             if (!filters.customSizeRange) {
                 setIsCustomSizeActive(false);
             }
@@ -142,7 +142,7 @@ const ControlBar = ({ filters, setFilters, selectedFirm, setSelectedFirm, filter
     const handleFirmChange = (value: string) => {
         const firmSlug = value === 'all' ? '' : value;
         setSelectedFirm(firmSlug);
-        
+
         if (firmSlug) {
             const firmData = ALL_CHALLENGES_DATA.find(c => c.firmId === firmSlug);
             if (firmData) {
@@ -157,8 +157,8 @@ const ControlBar = ({ filters, setFilters, selectedFirm, setSelectedFirm, filter
 
     return (
         <div className="space-y-4 mb-6">
-             <div className="flex justify-between items-center">
-                 <div className="flex items-center p-1 bg-white/5 rounded-full">
+            <div className="flex justify-between items-center">
+                <div className="flex items-center p-1 bg-white/5 rounded-full">
                     <button onClick={() => handleChallengeTypeChange('futures')} className={`px-4 py-1.5 text-sm font-semibold rounded-full transition-colors ${filters.challengeType === 'futures' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'}`}>
                         Futures
                     </button>
@@ -166,7 +166,7 @@ const ControlBar = ({ filters, setFilters, selectedFirm, setSelectedFirm, filter
                         CFD
                     </button>
                 </div>
-                 <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4">
                     <Popover>
                         <PopoverTrigger asChild>
                             <Button variant="outline" className="h-9 rounded-full">
@@ -217,12 +217,12 @@ const ControlBar = ({ filters, setFilters, selectedFirm, setSelectedFirm, filter
                             </Select>
                         </div>
                     </div>
-                 </div>
+                </div>
             </div>
 
             <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
                 <div className="flex items-center gap-4 flex-wrap flex-1">
-                     <div className="flex items-center gap-2 flex-wrap">
+                    <div className="flex items-center gap-2 flex-wrap">
                         <span className="font-semibold text-gray-400 mr-2 text-xs">Sizes:</span>
                         {sizes.map(size => (
                             <button
@@ -241,7 +241,7 @@ const ControlBar = ({ filters, setFilters, selectedFirm, setSelectedFirm, filter
                             </PopoverTrigger>
                             <PopoverContent className="w-80">
                                 <div className="space-y-4">
-                                     <div className="space-y-2">
+                                    <div className="space-y-2">
                                         <p className="text-sm font-medium">Custom Size Range</p>
                                         <p className="text-sm text-muted-foreground">
                                             {formatCurrency(tempCustomSize[0])} - {formatCurrency(tempCustomSize[1])}
@@ -275,7 +275,7 @@ const ControlBar = ({ filters, setFilters, selectedFirm, setSelectedFirm, filter
                     </div>
 
                     <Separator />
-                    
+
                     <div className="flex items-center space-x-2">
                         <button type="button" role="switch" aria-checked={filters.applyDiscount} onClick={handleDiscountToggle} className={`peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors h-6 w-11 ${filters.applyDiscount ? 'bg-orange-500' : 'bg-gray-600'}`}>
                             <span className={`pointer-events-none block rounded-full bg-white shadow-lg ring-0 transition-transform h-5 w-5 ${filters.applyDiscount ? 'translate-x-5' : 'translate-x-0'}`}></span>
@@ -283,8 +283,8 @@ const ControlBar = ({ filters, setFilters, selectedFirm, setSelectedFirm, filter
                         <label className="text-xs font-semibold text-gray-300">Apply Discount</label>
                     </div>
                 </div>
-                 <div className="relative flex-grow w-full md:flex-grow-0 md:w-auto md:hidden">
-                     <div className="mt-2">
+                <div className="relative flex-grow w-full md:flex-grow-0 md:w-auto md:hidden">
+                    <div className="mt-2">
                         <Select onValueChange={handleFirmChange} value={selectedFirm || 'all'}>
                             <SelectTrigger className="w-full bg-black/20 border border-white/10 rounded-full h-11 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 <SelectValue placeholder="Select a firm..." />
@@ -292,7 +292,7 @@ const ControlBar = ({ filters, setFilters, selectedFirm, setSelectedFirm, filter
                             <SelectContent>
                                 <SelectItem value="all">All Firms</SelectItem>
                                 {mockPropFirms.map((firm) => (
-                                     <SelectItem key={firm.id} value={firm.slug}>
+                                    <SelectItem key={firm.id} value={firm.slug}>
                                         <div className="flex items-center gap-2">
                                             <Image src={firm.logoUrl} alt={firm.name} width={24} height={24} className="rounded-sm" />
                                             <span>{firm.name}</span>
@@ -317,14 +317,14 @@ const ChallengeTable = ({ challenges, requestSort, sortConfig, applyDiscount, vi
     const textRef = React.useRef<HTMLSpanElement>(null); // Ref for the header text
     const isMobile = useIsMobile();
     const [isScrolled, setIsScrolled] = React.useState(false);
-    
+
     React.useEffect(() => {
         const container = scrollContainerRef.current;
         if (!container) return;
 
         const handleScroll = () => {
-             setIsScrolled(container.scrollLeft > 10);
-             if (isMobile && textRef.current) {
+            setIsScrolled(container.scrollLeft > 10);
+            if (isMobile && textRef.current) {
                 if (container.scrollLeft > 10) {
                     textRef.current.classList.add('scrolled-mobile-header');
                 } else {
@@ -352,9 +352,9 @@ const ChallengeTable = ({ challenges, requestSort, sortConfig, applyDiscount, vi
                     <thead className="sticky top-0 z-20 bg-black/50 backdrop-blur-lg border-b border-white/10">
                         <tr>
                             {columns.map(col => (
-                                <th 
-                                    key={col.key} 
-                                    scope="col" 
+                                <th
+                                    key={col.key}
+                                    scope="col"
                                     aria-sort={sortConfig?.key === col.key ? sortConfig.direction : 'none'}
                                     className={`px-2 py-3 sm:px-4 text-${col.align} text-xs font-bold text-gray-400 uppercase tracking-wider whitespace-nowrap ${col.sticky ? `sticky z-10 ${col.sticky === 'left' ? 'left-0 bg-black/50 backdrop-blur-lg' : 'right-0 bg-gray-900'}` : 'bg-gray-800/95'} ${col.className || ''}`}
                                 >
@@ -389,7 +389,7 @@ const ChallengeTable = ({ challenges, requestSort, sortConfig, applyDiscount, vi
 const ChallengeRow = ({ challenge, applyDiscount, isScrolled, visibleColumns }: any) => {
     const finalPrice = applyDiscount && challenge.promoDiscountPercent > 0 ? challenge.price * (1 - challenge.promoDiscountPercent / 100) : challenge.price;
     const firm = mockPropFirms.find(f => f.slug === challenge.firmId) || null;
-    
+
     const formatPercent = (value: number | number[] | null | undefined) => {
         if (value === null || value === undefined) return 'N/A';
         if (Array.isArray(value)) {
@@ -397,7 +397,7 @@ const ChallengeRow = ({ challenge, applyDiscount, isScrolled, visibleColumns }: 
         }
         return `${value}%`;
     }
-    
+
     if (!firm) {
         return (
             <tr className="group/row hover:bg-white/5 transition-colors duration-200 cursor-pointer">
@@ -405,16 +405,25 @@ const ChallengeRow = ({ challenge, applyDiscount, isScrolled, visibleColumns }: 
             </tr>
         );
     }
-    
+
     const columnRenderers: { [key: string]: React.ReactNode } = {
         firmName: (
             <td className="px-2 py-3 sm:px-4 whitespace-nowrap sticky left-0 z-0 bg-black/80 group-hover/row:bg-gray-800/80 backdrop-blur-sm">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 relative">
                     <div className="w-11 h-11 relative flex-shrink-0">
-                        <Image data-ai-hint="logo" className="rounded-lg object-contain border-2 border-white/10" src={challenge.logoUrl} alt={`${challenge.firmName} logo`} layout="fill"/>
+                        <Image data-ai-hint="logo" className="rounded-lg object-contain border-2 border-white/10" src={challenge.logoUrl} alt={`${challenge.firmName} logo`} layout="fill" />
+                        {/* Hover Indicator - Pulsing Badge */}
+                        <div className="absolute -top-1 -right-1 opacity-0 group-hover/row:opacity-100 transition-opacity duration-300">
+                            <div className="relative">
+                                <div className="absolute inset-0 bg-primary rounded-full animate-ping opacity-75" />
+                                <div className="relative bg-primary rounded-full p-1">
+                                    <Info className="h-3 w-3 text-white" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div 
-                       className={cn(
+                    <div
+                        className={cn(
                             "flex flex-col justify-center flex-shrink-0 transition-all duration-300 ease-in-out",
                             isScrolled ? "sm:opacity-100 sm:w-auto opacity-0 w-0" : "opacity-100 w-auto"
                         )}
@@ -423,6 +432,13 @@ const ChallengeRow = ({ challenge, applyDiscount, isScrolled, visibleColumns }: 
                         <div className="flex items-center text-xs text-gray-400 mt-1">
                             <Star className="h-3.5 w-3.5 text-yellow-400 mr-1" />
                             {challenge.trustpilotRating} ({challenge.trustpilotReviewCount})
+                        </div>
+                    </div>
+                    {/* Tooltip on hover - Desktop only */}
+                    <div className="absolute left-full ml-4 opacity-0 group-hover/row:opacity-100 transition-opacity duration-300 pointer-events-none hidden lg:block">
+                        <div className="bg-primary/90 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg whitespace-nowrap shadow-lg">
+                            Click for details
+                            <div className="absolute left-0 top-1/2 -translate-x-1 -translate-y-1/2 w-2 h-2 bg-primary/90 rotate-45" />
                         </div>
                     </div>
                 </div>
@@ -435,7 +451,7 @@ const ChallengeRow = ({ challenge, applyDiscount, isScrolled, visibleColumns }: 
             <td className="px-2 py-3 sm:px-4 whitespace-nowrap text-center">
                 <div className="flex items-center justify-center gap-2">
                     <span className="text-xs text-white">{challenge.profitSplit}%</span>
-                    <div className="w-16 h-1.5 bg-white rounded-full overflow-hidden"><div className="h-full bg-blue-500" style={{width: `${challenge.profitSplit}%`}}></div></div>
+                    <div className="w-16 h-1.5 bg-white rounded-full overflow-hidden"><div className="h-full bg-blue-500" style={{ width: `${challenge.profitSplit}%` }}></div></div>
                 </div>
             </td>
         ),
@@ -446,9 +462,9 @@ const ChallengeRow = ({ challenge, applyDiscount, isScrolled, visibleColumns }: 
         payoutFrequency: <td className="px-2 py-3 sm:px-4 text-xs text-gray-300 max-w-[200px] truncate text-center" title={challenge.payoutFrequency}>{challenge.payoutFrequency}</td>,
         price: (
             <td className="px-2 py-3 sm:px-4 whitespace-nowrap sticky right-0 z-0 bg-gray-900 group-hover/row:bg-gray-800">
-                 <div className="flex flex-col items-end sm:flex-row sm:items-center sm:justify-end gap-2">
-                     <div className="text-right">
-                       {applyDiscount && challenge.promoDiscountPercent > 0 ? (
+                <div className="flex flex-col items-end sm:flex-row sm:items-center sm:justify-end gap-2">
+                    <div className="text-right">
+                        {applyDiscount && challenge.promoDiscountPercent > 0 ? (
                             <>
                                 <p className="font-semibold text-green-400 text-xs sm:text-sm">{formatCurrency(finalPrice)}</p>
                                 <p className="text-xs text-gray-500 line-through">{formatCurrency(challenge.price)}</p>
@@ -456,11 +472,11 @@ const ChallengeRow = ({ challenge, applyDiscount, isScrolled, visibleColumns }: 
                         ) : (
                             <p className="font-semibold text-white text-xs sm:text-sm">{formatCurrency(finalPrice)}</p>
                         )}
-                         <p className="text-xs text-gray-400">{challenge.paymentType}</p>
+                        <p className="text-xs text-gray-400">{challenge.paymentType}</p>
                     </div>
                     <a href={challenge.affiliateLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="group relative w-full sm:w-auto inline-flex items-center justify-center px-3 py-2 sm:px-4 sm:py-2 border border-transparent text-xs sm:text-sm font-medium rounded-full shadow-sm text-white bg-orange-500 hover:bg-orange-600 overflow-hidden">
-                         <span className="transition-transform duration-300 group-hover:-translate-x-2">Buy</span>
-                         <ArrowRight className="absolute right-3 h-4 w-4 opacity-0 transition-all duration-300 transform translate-x-full group-hover:opacity-100 group-hover:translate-x-0" />
+                        <span className="transition-transform duration-300 group-hover:-translate-x-2">Buy</span>
+                        <ArrowRight className="absolute right-3 h-4 w-4 opacity-0 transition-all duration-300 transform translate-x-full group-hover:opacity-100 group-hover:translate-x-0" />
                     </a>
                 </div>
             </td>
@@ -483,7 +499,7 @@ const ChallengeRow = ({ challenge, applyDiscount, isScrolled, visibleColumns }: 
 
 const Pagination = ({ currentPage, totalPages, onPageChange }: any) => {
     const pageNumbers = [];
-    for(let i = 1; i <= totalPages; i++) {
+    for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(i);
     }
 
@@ -492,11 +508,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: any) => {
             <ul className="inline-flex items-center -space-x-px">
                 <li>
                     <button onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1} className="px-3 py-2 ml-0 leading-tight text-gray-400 bg-white/5 border border-gray-700 rounded-l-lg hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed">
-                        <ChevronLeft className="w-4 h-4"/>
+                        <ChevronLeft className="w-4 h-4" />
                     </button>
                 </li>
                 {pageNumbers.map(number => (
-                     <li key={number}>
+                    <li key={number}>
                         <button onClick={() => onPageChange(number)} className={`px-3 py-2 leading-tight border border-gray-700 ${currentPage === number ? 'bg-blue-600 text-white' : 'bg-white/5 text-gray-400 hover:bg-white/10'}`}>
                             {number}
                         </button>
@@ -504,7 +520,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: any) => {
                 ))}
                 <li>
                     <button onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === totalPages} className="px-3 py-2 leading-tight text-gray-400 bg-white/5 border border-gray-700 rounded-r-lg hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed">
-                        <ChevronRight className="w-4 h-4"/>
+                        <ChevronRight className="w-4 h-4" />
                     </button>
                 </li>
             </ul>
@@ -513,7 +529,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: any) => {
 }
 
 const FirmVsFirmSection = ({ firm1, firm2 }: { firm1: PropFirm; firm2: PropFirm }) => {
-    
+
     const findComparableTiers = (firm1: PropFirm, firm2: PropFirm): [AccountTier | null, AccountTier | null] => {
         const commonSizes = [100000, 50000, 25000, 150000];
         for (const size of commonSizes) {
@@ -544,23 +560,23 @@ const FirmVsFirmSection = ({ firm1, firm2 }: { firm1: PropFirm; firm2: PropFirm 
     return (
         <div className="max-w-6xl mx-auto space-y-8 my-12">
             <FirmComparisonHeader firm1={firm1} firm2={firm2} />
-            
+
             <div className="grid grid-cols-2 gap-4 md:gap-6 lg:gap-8 mt-12">
                 {/* Column for Firm 1 */}
                 <div className="space-y-4">
-                    <ComparisonMetricCard 
+                    <ComparisonMetricCard
                         title="Year Established"
                         icon={<Calendar className="w-6 h-6 md:w-8 md:h-8 text-primary" />}
                         value={firm1Years.year}
                         subvalue={firm1Years.yearsInOp}
                     />
-                    <ComparisonMetricCard 
+                    <ComparisonMetricCard
                         title="Platforms"
                         icon={<Monitor className="w-6 h-6 md:w-8 md:h-8 text-primary" />}
                         value={firm1.platforms?.join(', ') || 'N/A'}
                         isPlatformList
                     />
-                    <ComparisonMetricCard 
+                    <ComparisonMetricCard
                         title="Max Allocation"
                         icon={<TrendingUp className="w-6 h-6 md:w-8 md:h-8 text-primary" />}
                         value={firm1.maxAccountSize ? `$${(firm1.maxAccountSize / 1000).toFixed(0)}K` : 'N/A'}
@@ -568,19 +584,19 @@ const FirmVsFirmSection = ({ firm1, firm2 }: { firm1: PropFirm; firm2: PropFirm 
                 </div>
                 {/* Column for Firm 2 */}
                 <div className="space-y-4">
-                    <ComparisonMetricCard 
+                    <ComparisonMetricCard
                         title="Year Established"
                         icon={<Calendar className="w-6 h-6 md:w-8 md:h-8 text-secondary" />}
                         value={firm2Years.year}
                         subvalue={firm2Years.yearsInOp}
                     />
-                     <ComparisonMetricCard 
+                    <ComparisonMetricCard
                         title="Platforms"
                         icon={<Monitor className="w-6 h-6 md:w-8 md:h-8 text-secondary" />}
                         value={firm2.platforms?.join(', ') || 'N/A'}
                         isPlatformList
                     />
-                    <ComparisonMetricCard 
+                    <ComparisonMetricCard
                         title="Max Allocation"
                         icon={<TrendingUp className="w-6 h-6 md:w-8 md:h-8 text-secondary" />}
                         value={firm2.maxAccountSize ? `$${(firm2.maxAccountSize / 1000).toFixed(0)}K` : 'N/A'}
@@ -589,7 +605,7 @@ const FirmVsFirmSection = ({ firm1, firm2 }: { firm1: PropFirm; firm2: PropFirm 
             </div>
 
             {tier1 && tier2 && (
-                 <section className="space-y-4">
+                <section className="space-y-4">
                     <div className="text-center my-8 md:my-12">
                         <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">{`Challenge Comparison (~$${(tier1.size / 1000).toFixed(0)}K)`}</h2>
                     </div>
@@ -605,215 +621,215 @@ const FirmVsFirmSection = ({ firm1, firm2 }: { firm1: PropFirm; firm2: PropFirm 
 
 
 export default function ComparePage() {
-  const [challenges, setChallenges] = React.useState<any[]>([]);
-  const [loading, setLoading] = React.useState(true);
-  const [selectedFirm, setSelectedFirm] = React.useState('');
-  const [filters, setFilters] = React.useState({ accountSize: [100000], steps: [1], applyDiscount: true, challengeType: 'futures', customSizeRange: null });
-  const [sortConfig, setSortConfig] = React.useState<{key: string, direction: string}>({ key: 'price', direction: 'ascending' });
-  const [currentPage, setCurrentPage] = React.useState(1);
-  const ROWS_PER_PAGE = 8;
-  const [comparisonFirms, setComparisonFirms] = React.useState<{firm1: PropFirm, firm2: PropFirm} | null>(null);
+    const [challenges, setChallenges] = React.useState<any[]>([]);
+    const [loading, setLoading] = React.useState(true);
+    const [selectedFirm, setSelectedFirm] = React.useState('');
+    const [filters, setFilters] = React.useState({ accountSize: [100000], steps: [1], applyDiscount: true, challengeType: 'futures', customSizeRange: null });
+    const [sortConfig, setSortConfig] = React.useState<{ key: string, direction: string }>({ key: 'price', direction: 'ascending' });
+    const [currentPage, setCurrentPage] = React.useState(1);
+    const ROWS_PER_PAGE = 8;
+    const [comparisonFirms, setComparisonFirms] = React.useState<{ firm1: PropFirm, firm2: PropFirm } | null>(null);
 
-  const initialColumns = allTableColumns.reduce((acc, col) => {
-    acc[col.key] = true;
-    return acc;
-  }, {} as Record<string, boolean>);
-  
-  const [visibleColumns, setVisibleColumns] = React.useState(initialColumns);
+    const initialColumns = allTableColumns.reduce((acc, col) => {
+        acc[col.key] = true;
+        return acc;
+    }, {} as Record<string, boolean>);
 
-  React.useEffect(() => {
-    try {
-        const savedColumns = localStorage.getItem('visibleColumns');
-        if (savedColumns) {
-            setVisibleColumns(JSON.parse(savedColumns));
+    const [visibleColumns, setVisibleColumns] = React.useState(initialColumns);
+
+    React.useEffect(() => {
+        try {
+            const savedColumns = localStorage.getItem('visibleColumns');
+            if (savedColumns) {
+                setVisibleColumns(JSON.parse(savedColumns));
+            }
+        } catch (error) {
+            console.warn("Could not parse visible columns from localStorage", error)
         }
-    } catch (error) {
-        console.warn("Could not parse visible columns from localStorage", error)
-    }
-  }, []);
+    }, []);
 
-  React.useEffect(() => {
-    localStorage.setItem('visibleColumns', JSON.stringify(visibleColumns));
-  }, [visibleColumns]);
+    React.useEffect(() => {
+        localStorage.setItem('visibleColumns', JSON.stringify(visibleColumns));
+    }, [visibleColumns]);
 
-  const handleSetComparisonFirms = (firm1Slug: string, firm2Slug: string) => {
-    const firm1 = mockPropFirms.find(f => f.slug === firm1Slug);
-    const firm2 = mockPropFirms.find(f => f.slug === firm2Slug);
-    if (firm1 && firm2) {
-      setComparisonFirms({ firm1, firm2 });
-    }
-  };
-  
-  React.useEffect(() => {
-    if (!db) {
-        setChallenges(ALL_CHALLENGES_DATA);
-        setLoading(false);
-        return;
-    }
-    const challengesCollectionRef = collection(db, 'challenges');
-    const populateDataIfNeeded = async () => {
-        const snapshot = await getDocs(challengesCollectionRef);
-        if (snapshot.empty) {
-            console.log("Firestore 'challenges' collection is empty. Populating with mock data.");
-            const batch = writeBatch(db);
-            ALL_CHALLENGES_DATA.forEach((challenge) => {
-                if (!challenge.id) {
-                    console.warn('Challenge data is missing id, skipping:', challenge);
-                    return;
-                }
-                const docRef = doc(db, "challenges", challenge.id);
-                batch.set(docRef, challenge);
-            });
-            await batch.commit();
-            console.log("Finished populating data.");
+    const handleSetComparisonFirms = (firm1Slug: string, firm2Slug: string) => {
+        const firm1 = mockPropFirms.find(f => f.slug === firm1Slug);
+        const firm2 = mockPropFirms.find(f => f.slug === firm2Slug);
+        if (firm1 && firm2) {
+            setComparisonFirms({ firm1, firm2 });
         }
     };
-    
-    populateDataIfNeeded().catch(console.error);
 
-    const unsubscribe = onSnapshot(challengesCollectionRef, (snapshot) => {
-      const challengesData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setChallenges(challengesData);
-      setLoading(false);
-    }, (error) => {
-        console.error("Error fetching data from Firestore:", error);
-        console.log("Falling back to mock data.");
-        setChallenges(ALL_CHALLENGES_DATA);
-        setLoading(false);
-    });
+    React.useEffect(() => {
+        if (!db) {
+            setChallenges(ALL_CHALLENGES_DATA);
+            setLoading(false);
+            return;
+        }
+        const challengesCollectionRef = collection(db, 'challenges');
+        const populateDataIfNeeded = async () => {
+            const snapshot = await getDocs(challengesCollectionRef);
+            if (snapshot.empty) {
+                console.log("Firestore 'challenges' collection is empty. Populating with mock data.");
+                const batch = writeBatch(db);
+                ALL_CHALLENGES_DATA.forEach((challenge) => {
+                    if (!challenge.id) {
+                        console.warn('Challenge data is missing id, skipping:', challenge);
+                        return;
+                    }
+                    const docRef = doc(db, "challenges", challenge.id);
+                    batch.set(docRef, challenge);
+                });
+                await batch.commit();
+                console.log("Finished populating data.");
+            }
+        };
 
-    return () => unsubscribe();
-  }, []);
-  
-  const filteredAndSortedChallenges = React.useMemo(() => {
-    let filtered = challenges.filter(c => c.challengeType === filters.challengeType);
+        populateDataIfNeeded().catch(console.error);
 
-    if (selectedFirm) {
-        filtered = filtered.filter(c => c.firmId === selectedFirm);
-    }
-    
-    if (filters.customSizeRange) {
-      const [min, max] = filters.customSizeRange;
-      filtered = filtered.filter(c => c.accountSize >= min && c.accountSize <= max);
-    } else if (filters.accountSize.length > 0) {
-        filtered = filtered.filter(c => filters.accountSize.includes(c.accountSize));
-    }
-
-    if (filters.steps.length > 0) {
-        filtered = filtered.filter(c => {
-            if (!c) return false;
-            const stepMatch = filters.steps.includes(c.steps);
-            const instantMatch = filters.steps.includes('Instant') && c.isInstant;
-            return stepMatch || instantMatch;
+        const unsubscribe = onSnapshot(challengesCollectionRef, (snapshot) => {
+            const challengesData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            setChallenges(challengesData);
+            setLoading(false);
+        }, (error) => {
+            console.error("Error fetching data from Firestore:", error);
+            console.log("Falling back to mock data.");
+            setChallenges(ALL_CHALLENGES_DATA);
+            setLoading(false);
         });
+
+        return () => unsubscribe();
+    }, []);
+
+    const filteredAndSortedChallenges = React.useMemo(() => {
+        let filtered = challenges.filter(c => c.challengeType === filters.challengeType);
+
+        if (selectedFirm) {
+            filtered = filtered.filter(c => c.firmId === selectedFirm);
+        }
+
+        if (filters.customSizeRange) {
+            const [min, max] = filters.customSizeRange;
+            filtered = filtered.filter(c => c.accountSize >= min && c.accountSize <= max);
+        } else if (filters.accountSize.length > 0) {
+            filtered = filtered.filter(c => filters.accountSize.includes(c.accountSize));
+        }
+
+        if (filters.steps.length > 0) {
+            filtered = filtered.filter(c => {
+                if (!c) return false;
+                const stepMatch = filters.steps.includes(c.steps);
+                const instantMatch = filters.steps.includes('Instant') && c.isInstant;
+                return stepMatch || instantMatch;
+            });
+        }
+
+        const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+
+        filtered.sort((a, b) => {
+            if (!sortConfig.key) return 0;
+
+            let aValue = a[sortConfig.key];
+            let bValue = b[sortConfig.key];
+
+            // Handle special price key
+            if (sortConfig.key === 'price') {
+                aValue = a.price * (1 - (filters.applyDiscount ? (a.promoDiscountPercent || 0) / 100 : 0));
+                bValue = b.price * (1 - (filters.applyDiscount ? (b.promoDiscountPercent || 0) / 100 : 0));
+            }
+
+            // Default to -Infinity if value is null/undefined for numeric sorts
+            if (typeof aValue === 'number' || typeof bValue === 'number') {
+                aValue = aValue ?? -Infinity;
+                bValue = bValue ?? -Infinity;
+            }
+
+            if (typeof aValue === 'string' && typeof bValue === 'string') {
+                const comparison = collator.compare(aValue, bValue);
+                return sortConfig.direction === 'ascending' ? comparison : -comparison;
+            }
+
+            if (aValue < bValue) return sortConfig.direction === 'ascending' ? -1 : 1;
+            if (aValue > bValue) return sortConfig.direction === 'ascending' ? 1 : -1;
+
+            return 0;
+        });
+        return filtered;
+    }, [challenges, selectedFirm, filters, sortConfig]);
+
+    const totalPages = Math.ceil(filteredAndSortedChallenges.length / ROWS_PER_PAGE);
+    const paginatedChallenges = filteredAndSortedChallenges.slice((currentPage - 1) * ROWS_PER_PAGE, currentPage * ROWS_PER_PAGE);
+
+    React.useEffect(() => {
+        setCurrentPage(1);
+    }, [filters, selectedFirm]);
+
+
+    const requestSort = (key: string) => {
+        let direction = 'ascending';
+        if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+            direction = 'descending';
+        }
+        setSortConfig({ key, direction });
+    };
+
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center text-white font-sans p-4">
+                <div className="flex items-center gap-3">
+                    <svg className="animate-spin h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Loading Challenge Data...
+                </div>
+            </div>
+        );
     }
-    
-    const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
 
-    filtered.sort((a, b) => {
-        if (!sortConfig.key) return 0;
-
-        let aValue = a[sortConfig.key];
-        let bValue = b[sortConfig.key];
-        
-        // Handle special price key
-        if (sortConfig.key === 'price') {
-            aValue = a.price * (1 - (filters.applyDiscount ? (a.promoDiscountPercent || 0) / 100 : 0));
-            bValue = b.price * (1 - (filters.applyDiscount ? (b.promoDiscountPercent || 0) / 100 : 0));
-        }
-
-        // Default to -Infinity if value is null/undefined for numeric sorts
-        if (typeof aValue === 'number' || typeof bValue === 'number') {
-            aValue = aValue ?? -Infinity;
-            bValue = bValue ?? -Infinity;
-        }
-
-        if (typeof aValue === 'string' && typeof bValue === 'string') {
-            const comparison = collator.compare(aValue, bValue);
-            return sortConfig.direction === 'ascending' ? comparison : -comparison;
-        }
-
-        if (aValue < bValue) return sortConfig.direction === 'ascending' ? -1 : 1;
-        if (aValue > bValue) return sortConfig.direction === 'ascending' ? 1 : -1;
-        
-        return 0;
-    });
-    return filtered;
-  }, [challenges, selectedFirm, filters, sortConfig]);
-
-  const totalPages = Math.ceil(filteredAndSortedChallenges.length / ROWS_PER_PAGE);
-  const paginatedChallenges = filteredAndSortedChallenges.slice((currentPage - 1) * ROWS_PER_PAGE, currentPage * ROWS_PER_PAGE);
-
-  React.useEffect(() => {
-    setCurrentPage(1);
-  }, [filters, selectedFirm]);
-
-
-  const requestSort = (key: string) => {
-    let direction = 'ascending';
-    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
-    }
-    setSortConfig({ key, direction });
-  };
-
-  if (loading) {
     return (
-      <div className="flex items-center justify-center text-white font-sans p-4">
-        <div className="flex items-center gap-3">
-          <svg className="animate-spin h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
-          Loading Challenge Data...
+        <div className="font-sans text-white">
+            <div className="max-w-full mx-auto">
+                <header className="mb-10 text-center">
+                    <h1 className="text-5xl font-extrabold text-white tracking-tight">Compare Prop Firms</h1>
+                    <p className="mt-3 text-lg text-gray-400 max-w-2xl mx-auto">The EZ-iest Way to Compare Prop Firm Challenges.</p>
+                </header>
+
+                <main>
+                    <ControlBar
+                        filters={filters}
+                        setFilters={setFilters}
+                        selectedFirm={selectedFirm}
+                        setSelectedFirm={setSelectedFirm}
+                        filteredCount={filteredAndSortedChallenges.length}
+                        totalCount={challenges.filter(c => c.challengeType === filters.challengeType).length}
+                        visibleColumns={visibleColumns}
+                        setVisibleColumns={setVisibleColumns}
+                    />
+                    <ChallengeTable
+                        challenges={paginatedChallenges}
+                        requestSort={requestSort}
+                        sortConfig={sortConfig}
+                        applyDiscount={filters.applyDiscount}
+                        visibleColumns={visibleColumns}
+                    />
+                    {totalPages > 1 && (
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            onPageChange={setCurrentPage}
+                        />
+                    )}
+                </main>
+
+                <section className="my-12">
+                    <FirmVsFirmSelector firms={mockPropFirms} onCompare={handleSetComparisonFirms} />
+                </section>
+
+                {comparisonFirms && (
+                    <FirmVsFirmSection firm1={comparisonFirms.firm1} firm2={comparisonFirms.firm2} />
+                )}
+            </div>
         </div>
-      </div>
     );
-  }
-
-  return (
-    <div className="font-sans text-white">
-      <div className="max-w-full mx-auto">
-        <header className="mb-10 text-center">
-          <h1 className="text-5xl font-extrabold text-white tracking-tight">Compare Prop Firms</h1>
-          <p className="mt-3 text-lg text-gray-400 max-w-2xl mx-auto">The EZ-iest Way to Compare Prop Firm Challenges.</p>
-        </header>
-
-        <main>
-          <ControlBar 
-            filters={filters}
-            setFilters={setFilters}
-            selectedFirm={selectedFirm}
-            setSelectedFirm={setSelectedFirm}
-            filteredCount={filteredAndSortedChallenges.length}
-            totalCount={challenges.filter(c => c.challengeType === filters.challengeType).length}
-            visibleColumns={visibleColumns}
-            setVisibleColumns={setVisibleColumns}
-          />
-          <ChallengeTable 
-            challenges={paginatedChallenges} 
-            requestSort={requestSort}
-            sortConfig={sortConfig}
-            applyDiscount={filters.applyDiscount}
-            visibleColumns={visibleColumns}
-          />
-           {totalPages > 1 && (
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
-            />
-          )}
-        </main>
-        
-        <section className="my-12">
-            <FirmVsFirmSelector firms={mockPropFirms} onCompare={handleSetComparisonFirms} />
-        </section>
-
-        {comparisonFirms && (
-            <FirmVsFirmSection firm1={comparisonFirms.firm1} firm2={comparisonFirms.firm2} />
-        )}
-      </div>
-    </div>
-  );
 }
