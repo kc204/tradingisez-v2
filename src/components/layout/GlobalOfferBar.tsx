@@ -33,8 +33,8 @@ const GlobalOfferBar = () => {
 
   return (
     <>
-      <div className="h-9 w-full md:hidden" aria-hidden="true" />
-      <div data-global-offer-bar="true" className="bg-primary text-primary-foreground py-2 text-sm fixed md:sticky top-0 z-50 shadow-md w-full overflow-x-hidden group">
+      <div className="h-9 w-full" aria-hidden="true" />
+      <div data-global-offer-bar="true" className="bg-primary text-primary-foreground py-2 text-sm fixed top-0 z-50 shadow-md w-full overflow-x-hidden group">
         <div className={cn("flex w-max animate-marquee group-hover:[animation-play-state:paused]")}>
           <div className="flex">
             {duplicatedOffers.map((offer, index) => (
