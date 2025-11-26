@@ -3,6 +3,7 @@
 
 import FirmCard from '@/components/propfirms/FirmCard';
 import PropFirmFinder from '@/components/home/PropFirmFinder';
+import FeaturedFirmsCarousel from '@/components/home/FeaturedFirmsCarousel';
 import FreeResourceCard from '@/components/shared/FreeResourceCard';
 import { mockPropFirms, mockFreeResources, ALL_CHALLENGES_DATA } from '@/lib/mockData';
 import Link from 'next/link';
@@ -10,7 +11,7 @@ import { cn } from "@/lib/utils";
 import { StarBorder } from "@/components/ui/star-border";
 import React, { useRef, useEffect, useState, useMemo, useCallback } from 'react';
 import type { PropFirm, AccountTier, FirmData, TrendData, WeeklyData } from '@/lib/types';
-import type { CarouselApi } from '@/components/ui/carousel';
+
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, onSnapshot, doc, getDocs, writeBatch } from 'firebase/firestore';
 import { Search, Star, ChevronsUpDown, ExternalLink, Info, ChevronDown, Zap, ChevronLeft, ChevronRight, Briefcase, CreditCard, Banknote, CandlestickChart, ShieldCheck, FileText, Ban, ArrowRight, Calendar, TrendingUp, Monitor, Edit, Loader2 } from 'lucide-react';
@@ -30,8 +31,7 @@ import FirmComparisonHeader from '@/components/compare/FirmComparisonHeader';
 import ComparisonMetricCard from '@/components/compare/ComparisonMetricCard';
 import TierComparisonCard from '@/components/compare/TierComparisonCard';
 import { createPortal } from 'react-dom';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import Autoplay from "embla-carousel-autoplay"
+
 
 
 const firebaseConfig = {
@@ -761,95 +761,7 @@ const FirmVsFirmSection = ({ firm1, firm2 }: { firm1: PropFirm; firm2: PropFirm 
     );
 };
 
-const FeaturedFirmsCarousel = () => {
-    const featuredFirms = mockPropFirms.filter(f => f.isFeatured);
-    const autoplayPlugin = React.useRef(Autoplay({ delay: 4000, stopOnInteraction: true }));
-    const isMobile = useIsMobile();
-    const [api, setApi] = useState<CarouselApi | undefined>();
-    const [scale, setScale] = useState<number[]>([]);
-    const [opacity, setOpacity] = useState<number[]>([]);
 
-    const onSelect = useCallback((api: CarouselApi) => {
-        if (!api) return;
-        const scrollSnaps = api.scrollSnapList();
-        const selectedSnap = api.selectedScrollSnap();
-
-        const newScale = scrollSnaps.map((_, index) => (index === selectedSnap ? 1 : 0.8));
-        const newOpacity = scrollSnaps.map((_, index) => (index === selectedSnap ? 1 : 0.5));
-
-        setScale(newScale);
-        setOpacity(newOpacity);
-    }, []);
-
-    useEffect(() => {
-        if (!api) return;
-        onSelect(api);
-        api.on("select", onSelect);
-        return () => {
-            api.off("select", onSelect);
-        };
-    }, [api, onSelect]);
-
-    if (isMobile === undefined) {
-        return null;
-    }
-
-    if (!isMobile) {
-        return (
-            <Carousel
-                opts={{ align: "start", loop: true }}
-                plugins={[autoplayPlugin.current]}
-                className="w-full"
-            >
-                <CarouselContent>
-                    {featuredFirms.map((firm) => (
-                        <CarouselItem key={firm.id} className="md:basis-1/2 lg:basis-1/3">
-                            <div className="p-1 h-full">
-                                <FirmCard firm={firm} />
-                            </div>
-                        </CarouselItem>
-                    ))}
-                </CarouselContent>
-                <CarouselPrevious className="hidden md:flex" />
-                <CarouselNext className="hidden md:flex" />
-            </Carousel>
-        );
-    }
-
-    return (
-        <>
-            <style>{`
-            .coverflow .embla__slide {
-                transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-            }
-        `}</style>
-            <div className="relative w-full h-[500px] flex items-center justify-center overflow-hidden [perspective:1000px]">
-                <Carousel
-                    setApi={setApi}
-                    opts={{ align: "center", loop: true, containScroll: false }}
-                    plugins={[autoplayPlugin.current]}
-                    className="w-full coverflow"
-                >
-                    <CarouselContent className="-ml-0">
-                        {featuredFirms.map((firm, index) => (
-                            <CarouselItem key={firm.id} className="basis-[75%] pl-0">
-                                <div
-                                    className="p-1 h-full"
-                                    style={{
-                                        transform: `scale(${scale[index] || 0.8})`,
-                                        opacity: opacity[index] || 0.5,
-                                    }}
-                                >
-                                    <FirmCard firm={firm} />
-                                </div>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                </Carousel>
-            </div>
-        </>
-    );
-}
 
 export default function Home() {
     const featuredFreeResources = mockFreeResources.filter(r => r.isFeatured).slice(0, 3);
@@ -908,7 +820,7 @@ export default function Home() {
         <div className="space-y-16">
             <PropFirmFinder onSearch={handleHeroSearch} />
 
-            <section className="py-12">
+            <section className="py-12 block lg:hidden">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center text-foreground mb-10">Featured Prop Firms</h2>
                     {isClient ? <FeaturedFirmsCarousel /> : null}

@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 import { Search, TrendingUp, BarChart2, Zap } from 'lucide-react';
+import FeaturedFirmsCarousel from '@/components/home/FeaturedFirmsCarousel';
 
 interface PropFirmFinderProps {
     onSearch: (filters: {
@@ -40,6 +41,7 @@ export default function PropFirmFinder({ onSearch }: PropFirmFinderProps) {
     };
 
     return (
+
         <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 overflow-hidden">
 
             {/* Background Elements */}
@@ -139,41 +141,9 @@ export default function PropFirmFinder({ onSearch }: PropFirmFinderProps) {
                 </div>
 
                 {/* Right Column: Visual/Stats (Optional, matching the 'premium' feel) */}
-                <div className="hidden lg:block lg:col-span-5 relative">
-                    <div className="relative z-10 bg-gradient-to-br from-[#1A1D24] to-black border border-white/10 rounded-3xl p-2 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                        <div className="bg-[#0A0A0A] rounded-2xl overflow-hidden relative">
-                            {/* Mock Dashboard UI */}
-                            <div className="p-6 space-y-6">
-                                <div className="flex items-center justify-between">
-                                    <div className="space-y-1">
-                                        <div className="h-2 w-24 bg-white/10 rounded-full"></div>
-                                        <div className="h-2 w-16 bg-white/10 rounded-full"></div>
-                                    </div>
-                                    <div className="h-8 w-8 bg-primary/20 rounded-full"></div>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4">
-                                    <div className="bg-white/5 p-4 rounded-xl space-y-2">
-                                        <div className="h-8 w-8 bg-green-500/20 rounded-lg flex items-center justify-center">
-                                            <TrendingUp className="w-5 h-5 text-green-500" />
-                                        </div>
-                                        <div className="text-2xl font-bold text-white">$12,450</div>
-                                        <div className="text-xs text-gray-500">Profit Target</div>
-                                    </div>
-                                    <div className="bg-white/5 p-4 rounded-xl space-y-2">
-                                        <div className="h-8 w-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                                            <BarChart2 className="w-5 h-5 text-blue-500" />
-                                        </div>
-                                        <div className="text-2xl font-bold text-white">100%</div>
-                                        <div className="text-xs text-gray-500">Win Rate</div>
-                                    </div>
-                                </div>
-                                <div className="h-32 bg-white/5 rounded-xl flex items-end p-4 gap-2">
-                                    {[40, 70, 45, 90, 60, 80, 50].map((h, i) => (
-                                        <div key={i} className="flex-1 bg-primary/20 rounded-t-sm hover:bg-primary/40 transition-colors" style={{ height: `${h}%` }}></div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
+                <div className="hidden lg:block lg:col-span-5 relative h-full">
+                    <div className="h-full flex flex-col justify-center">
+                        <FeaturedFirmsCarousel desktopBasis="basis-full" variant="hero" />
                     </div>
                 </div>
 

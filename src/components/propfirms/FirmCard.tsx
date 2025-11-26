@@ -9,12 +9,14 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Star, TrendingUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 interface FirmCardProps {
   firm: PropFirm;
+  variant?: 'default' | 'hero';
 }
 
-const FirmCard = ({ firm }: FirmCardProps) => {
+const FirmCard = ({ firm, variant = 'default' }: FirmCardProps) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -23,22 +25,27 @@ const FirmCard = ({ firm }: FirmCardProps) => {
 
 
   return (
-    <Card className="flex flex-col h-full shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <Card className={cn(
+      "flex flex-col h-full transition-shadow duration-300",
+      variant === 'hero'
+        ? "bg-[#1A1D24]/80 backdrop-blur-xl border-white/10 shadow-2xl"
+        : "shadow-lg hover:shadow-xl"
+    )}>
       <CardHeader className="relative">
         <div className="flex items-start justify-between">
-            <div className="w-20 h-20 relative flex-shrink-0 mb-2 mr-4">
+          <div className="w-20 h-20 relative flex-shrink-0 mb-2 mr-4">
             {isMounted ? (
-              <Image 
-                src={firm.logoUrl} 
-                alt={`${firm.name} logo`} 
-                layout="fill" 
-                objectFit="contain" 
+              <Image
+                src={firm.logoUrl}
+                alt={`${firm.name} logo`}
+                layout="fill"
+                objectFit="contain"
                 className="rounded-lg object-contain border-2 border-white/10"
                 data-ai-hint="company logo"
               />
-              ) : (
-                <div className="w-full h-full bg-muted rounded-lg animate-pulse" />
-              )}
+            ) : (
+              <div className="w-full h-full bg-muted rounded-lg animate-pulse" />
+            )}
           </div>
           {firm.isFeatured && (
             <Badge variant="default" className="absolute top-4 right-4 bg-accent text-accent-foreground"> {/* Use accent for featured badge */}
@@ -55,7 +62,7 @@ const FirmCard = ({ firm }: FirmCardProps) => {
         <CardDescription className="text-sm mb-3 min-h-[3rem] line-clamp-3">{firm.briefDescription}</CardDescription>
         <div className="space-y-1 text-xs text-muted-foreground">
           {firm.keyInfoSnippets?.slice(0, 2).map(snippet => (
-             <p key={snippet.label}><span className="font-medium text-foreground">{snippet.label}:</span> {snippet.value}</p>
+            <p key={snippet.label}><span className="font-medium text-foreground">{snippet.label}:</span> {snippet.value}</p>
           ))}
         </div>
         {firm.rating && (
