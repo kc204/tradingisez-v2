@@ -44,9 +44,17 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const openDropdownRef = useRef<string | null>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    openDropdownRef.current = openDropdown;
+    if (openDropdown) {
+      setIsVisible(true);
+    }
+  }, [openDropdown]);
 
   // Store the last non-crypto path
   useEffect(() => {
@@ -72,6 +80,12 @@ const Header = () => {
     initializeScrollState();
 
     const handleScrollLogic = () => {
+      // If a dropdown is open, always keep header visible
+      if (openDropdownRef.current) {
+        setIsVisible(true);
+        return;
+      }
+
       const currentScrollY = window.scrollY;
       const localLastScrollY = lastScrollY.current;
 
@@ -129,7 +143,7 @@ const Header = () => {
       clearHoverTimeout();
       hoverTimeoutRef.current = setTimeout(() => {
         setOpenDropdown(null);
-      }, 100);
+      }, 300);
     }
   };
 
@@ -138,6 +152,7 @@ const Header = () => {
       link.dropdown ? (
         <DropdownMenu
           key={link.label}
+          modal={false}
           open={!isMobileLink && mounted ? openDropdown === link.label : undefined}
           onOpenChange={(isOpen) => {
             if (!isMobileLink && mounted) {
@@ -177,6 +192,7 @@ const Header = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             className="bg-popover text-popover-foreground"
+            sideOffset={0}
             onMouseEnter={() => handleMouseEnter(link.label, isMobileLink)}
             onMouseLeave={() => handleMouseLeave(isMobileLink)}
           >
@@ -233,7 +249,7 @@ const Header = () => {
         "shadow-lg sticky z-40",
         "top-[2.25rem]",
         "transition-[transform,opacity] duration-300 ease-out",
-        "bg-header-background/80 backdrop-blur-md text-header-foreground",
+        "bg-header-background text-header-foreground",
         isVisible
           ? "opacity-100 translate-y-0"
           : "opacity-0 -translate-y-full pointer-events-none"
