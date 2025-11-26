@@ -25,12 +25,13 @@ const mainSiteNavLinks = [
       { href: '/compare-prop-firms', label: 'Compare Firms' },
     ],
   },
-  { href: '/free-resources', label: 'Free Resources',
+  {
+    href: '/free-resources', label: 'Free Resources',
     dropdown: [
-        { href: '/free-resources', label: 'Overview' },
-        { href: '/free-resources/audiobooks', label: 'Audiobooks' },
-        { href: '/free-resources/al-brooks-course', label: 'Al Brooks Free Course' },
-      ],
+      { href: '/free-resources', label: 'Overview' },
+      { href: '/free-resources/audiobooks', label: 'Audiobooks' },
+      { href: '/free-resources/al-brooks-course', label: 'Al Brooks Free Course' },
+    ],
   },
 ];
 
@@ -46,7 +47,7 @@ const Header = () => {
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
-  
+
   // Store the last non-crypto path
   useEffect(() => {
     if (pathname && !pathname.startsWith('/crypto')) {
@@ -55,8 +56,8 @@ const Header = () => {
   }, [pathname]);
 
   useEffect(() => {
-    setMounted(true); 
-    
+    setMounted(true);
+
     if (typeof window === 'undefined') return;
 
     const initializeScrollState = () => {
@@ -67,8 +68,8 @@ const Header = () => {
         setIsVisible(true);
       }
     };
-    
-    initializeScrollState(); 
+
+    initializeScrollState();
 
     const handleScrollLogic = () => {
       const currentScrollY = window.scrollY;
@@ -94,7 +95,7 @@ const Header = () => {
     };
 
     window.addEventListener('scroll', handleScrollLogic, { passive: true });
-    
+
     return () => {
       window.removeEventListener('scroll', handleScrollLogic);
       if (hoverTimeoutRef.current) {
@@ -156,7 +157,7 @@ const Header = () => {
               className={cn(
                 "data-[state=open]:bg-primary data-[state=open]:text-primary-foreground",
                 isMobileLink ? 'w-full justify-start text-foreground hover:text-foreground'
-                              : 'text-header-foreground hover:text-white hover:bg-primary/80 group'
+                  : 'text-header-foreground hover:text-white hover:bg-primary/80 group'
               )}
               onMouseEnter={() => handleMouseEnter(link.label, isMobileLink)}
               onMouseLeave={() => handleMouseLeave(isMobileLink)}
@@ -175,7 +176,7 @@ const Header = () => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="bg-popover text-popover-foreground" 
+            className="bg-popover text-popover-foreground"
             onMouseEnter={() => handleMouseEnter(link.label, isMobileLink)}
             onMouseLeave={() => handleMouseLeave(isMobileLink)}
           >
@@ -208,14 +209,14 @@ const Header = () => {
           asChild
           className={cn(
             isMobileLink ? 'w-full justify-start text-foreground hover:text-foreground'
-                          : 'text-header-foreground hover:text-white hover:bg-primary/80'
+              : 'text-header-foreground hover:text-white hover:bg-primary/80'
           )}
         >
           <Link href={link.href} onClick={() => {
             if (isMobileLink) setMobileMenuOpen(false);
             if (!isMobileLink && mounted) {
-                clearHoverTimeout();
-                setOpenDropdown(null);
+              clearHoverTimeout();
+              setOpenDropdown(null);
             }
           }}>
             {link.label}
@@ -230,9 +231,9 @@ const Header = () => {
     <header
       className={cn(
         "shadow-lg sticky z-40",
-        "top-[2.25rem]", 
+        "top-[2.25rem]",
         "transition-[transform,opacity] duration-300 ease-out",
-        "bg-header-background text-header-foreground", 
+        "bg-header-background/80 backdrop-blur-md text-header-foreground",
         isVisible
           ? "opacity-100 translate-y-0"
           : "opacity-0 -translate-y-full pointer-events-none"
@@ -241,7 +242,7 @@ const Header = () => {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="text-2xl font-bold text-header-foreground hover:text-header-foreground transition-transform duration-300 ease-in-out hover:scale-105" 
+          className="text-2xl font-bold text-header-foreground hover:text-header-foreground transition-transform duration-300 ease-in-out hover:scale-105"
           onClick={() => {
             if (mobileMenuOpen) setMobileMenuOpen(false);
             if (openDropdown) setOpenDropdown(null);
@@ -270,15 +271,15 @@ const Header = () => {
               side="right"
               className="w-[300px] sm:w-[350px] p-6 bg-card text-card-foreground border-border"
             >
-              <SheetTitle className="sr-only">Main Menu</SheetTitle> 
+              <SheetTitle className="sr-only">Main Menu</SheetTitle>
               <div className="flex justify-between items-center mb-6">
-                  <Link
+                <Link
                   href="/"
                   className="text-2xl font-bold text-foreground"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                    Tradingis<span className="text-accent">EZ</span>
-                  </Link>
+                  Tradingis<span className="text-accent">EZ</span>
+                </Link>
                 <Button
                   variant="ghost"
                   size="icon"
