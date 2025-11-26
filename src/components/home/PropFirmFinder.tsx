@@ -42,7 +42,7 @@ export default function PropFirmFinder({ onSearch }: PropFirmFinderProps) {
 
     return (
 
-        <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 overflow-hidden">
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 overflow-hidden">
 
             {/* Background Elements */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-full pointer-events-none overflow-hidden">
@@ -142,7 +142,7 @@ export default function PropFirmFinder({ onSearch }: PropFirmFinderProps) {
 
                 {/* Right Column: Visual/Stats (Optional, matching the 'premium' feel) */}
                 <div className="hidden lg:block lg:col-span-5 relative h-full">
-                    <div className="h-full flex flex-col justify-center">
+                    <div className="h-full flex flex-col justify-end">
                         <FeaturedFirmsCarousel desktopBasis="basis-full" variant="hero" />
                     </div>
                 </div>

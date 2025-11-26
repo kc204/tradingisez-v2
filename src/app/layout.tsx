@@ -95,7 +95,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="font-sans antialiased flex flex-col min-h-screen overflow-x-hidden">
+      <body className="font-sans antialiased flex flex-col min-h-screen">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark" // Enforce dark theme for "Dynamic Blue & Action Orange"
