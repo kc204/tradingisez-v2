@@ -72,13 +72,13 @@ const FeaturedFirmsCarousel = ({
                 <CarouselPrevious className={cn(
                     "hidden md:flex",
                     variant === 'hero'
-                        ? "-left-12 bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 text-white h-10 w-10"
+                        ? "-left-8 bg-transparent border-none hover:bg-transparent text-gray-400 hover:text-primary [&_svg]:stroke-[3] h-10 w-10"
                         : ""
                 )} />
                 <CarouselNext className={cn(
                     "hidden md:flex",
                     variant === 'hero'
-                        ? "-right-12 bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 text-white h-10 w-10"
+                        ? "-right-8 bg-transparent border-none hover:bg-transparent text-gray-400 hover:text-primary [&_svg]:stroke-[3] h-10 w-10"
                         : ""
                 )} />
             </Carousel>
